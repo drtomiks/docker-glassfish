@@ -1,7 +1,7 @@
 tutum-docker-glassfish
 =====================
 
-Base docker image to run a Glassfish 4.0 application server
+Base docker image to run a Glassfish 4.1 application server
 
 
 Usage
@@ -55,3 +55,5 @@ You can now test your deployment:
 Done!
 
 **by http://www.tutum.co**
+
+modded for jdk 8 and gf 4.1 by Fedechicco
