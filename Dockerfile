@@ -17,7 +17,7 @@ ADD change_admin_password_func.sh /change_admin_password_func.sh
 ADD enable_secure_admin.sh /enable_secure_admin.sh
 RUN chmod +x /*.sh
 
-# 4848 (administration), 8080 (HTTP listener), 8181 (HTTPS listener)
-EXPOSE 4848 8080 8181
+# 4848 (administration), 8080 (HTTP listener), 8181 (HTTPS listener), 9009 (JPDA debug port)
+EXPOSE 4848 8080 8181 9009
 
 CMD ["/run.sh"]
