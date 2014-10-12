@@ -9,4 +9,5 @@ fi
 echo "=> Restarting Glassfish server"
 asadmin stop-domain
 echo "=> Starting and running Glassfish server"
-asadmin start-domain -w
+DEBUG_MODE=${DEBUG:"false"}
+asadmin start-domain --debug=${DEBUG_MODE} -w
