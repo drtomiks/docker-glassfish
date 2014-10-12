@@ -1,11 +1,11 @@
-FROM tifayuki/java:7
-MAINTAINER Feng Honglin <hfeng@tutum.co>
+FROM java:8
+MAINTAINER Federico Bonelli <fedechicco@gmail.com>
 
 RUN apt-get update && \
     apt-get install -y wget unzip pwgen expect && \
-    wget download.java.net/glassfish/4.0/release/glassfish-4.0.zip && \
-    unzip glassfish-4.0.zip -d /opt && \
-    rm glassfish-4.0.zip && \
+    wget http://download.java.net/glassfish/4.1/release/glassfish-4.1.zip && \
+    unzip glassfish-4.1.zip -d /opt && \
+    rm glassfish-4.1.zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
