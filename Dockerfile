@@ -1,4 +1,4 @@
-FROM java:8
+FROM java:7
 MAINTAINER Federico Bonelli <fedechicco@gmail.com>
 
 RUN apt-get update && \
