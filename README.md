@@ -62,7 +62,10 @@ set the environment variable `DEBUG` to `true`:
 	docker run -d -p 4848:4848 -p 8080:8080 -p 9009:9009 -e DEBUG="true" bonelli/glassfish-4.1
 This should allow for debugger connections on port 9009.
 
-	
-**by http://www.tutum.co**
+Notes
+-----
+Modified to use Oracle Java 7.
 
-modded for jdk 8 and gf 4.1 by Fedechicco
+
+
+
