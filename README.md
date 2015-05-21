@@ -63,8 +63,6 @@ This should allow for debugger connections on port 9009.
 
 Notes
 -----
-Modified to use Oracle Java 7.
-
 Auto deploy directory:
 /opt/glassfish3/glassfish/domains/domain1/autodeploy
 
