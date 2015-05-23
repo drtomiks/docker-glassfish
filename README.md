@@ -64,9 +64,15 @@ This should allow for debugger connections on port 9009.
 Notes
 -----
 Auto deploy directory:
-/opt/glassfish3/glassfish/domains/domain1/autodeploy
+/opt/glassfish4/glassfish/domains/domain1/autodeploy
+
+Log directory:
+/opt/glassfish4/glassfish/domains/domain1/logs
+
 
 docker run -d -v ~/tmp/domains:/opt/glassfish4/glassfish/domains:ro -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1
+
+docker run --rm -it -v ~/tmp/glassfish/import:/import:ro -v ~/tmp/glassfish/logs:/opt/glassfish4/glassfish/domains/domain1/logs -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
 
 docker run --rm -it -v ~/tmp/glassfish/import:/import:ro -v ~/tmp/glassfish/domains:/opt/glassfish4/glassfish/domains -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
 

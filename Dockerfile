@@ -7,15 +7,19 @@ RUN apt-get update && \
     unzip glassfish-4.1.zip -d /opt && \
     rm glassfish-4.1.zip
 
-ENV PATH /opt/glassfish4/bin:$PATH
+ENV PATH /opt/glassfish4/bin:/opt/app/bin:$PATH
 
-ADD start-glassfish.sh /start-glassfish.sh
-ADD initialize-glassfish.sh /initialize-glassfish.sh
-ADD configure-glassfish.sh /configure-glassfish.sh
-ADD change_admin_password.sh /change_admin_password.sh
-ADD change_admin_password_func.sh /change_admin_password_func.sh
-ADD enable_secure_admin.sh /enable_secure_admin.sh
-RUN chmod +x /*.sh
+RUN mkdir -p /opt/app/bin
+RUN mkdir -p /opt/app/deploy
+
+ADD bin/start-glassfish.sh /opt/app/bin/start-glassfish.sh
+ADD bin/initialize-glassfish.sh /opt/app/bin/initialize-glassfish.sh
+ADD bin/configure-glassfish.sh /opt/app/bin/configure-glassfish.sh
+ADD bin/change_admin_password.sh /opt/app/bin/change_admin_password.sh
+ADD bin/change_admin_password_func.sh /opt/app/bin/change_admin_password_func.sh
+ADD bin/enable_secure_admin.sh /opt/app/bin/enable_secure_admin.sh
+
+RUN chmod +x /opt/app/bin/*.sh
 
 RUN echo 'root:root' | chpasswd
 
@@ -24,5 +28,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # 4848 (administration), 8080 (HTTP listener), 8181 (HTTPS listener), 9009 (JPDA debug port)
 EXPOSE 4848 8080 8181 9009
 
-CMD ["/start-glassfish.sh"]
+CMD ["/opt/app/bin/start-glassfish.sh"]
 

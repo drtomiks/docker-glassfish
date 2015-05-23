@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -f /.glassfish_admin_password_changed ]; then
+if [ -f ${root_dir}/.glassfish_admin_password_changed ]; then
     echo "Glassfish 'admin' password already changed!"
     exit 0
 fi
@@ -12,11 +12,11 @@ PASS=${GLASSFISH_PASS:-$(pwgen -s 12 1)}
 _word=$( [ ${GLASSFISH_PASS} ] && echo "preset" || echo "random" )
 
 echo "=> Modifying password of admin to ${_word} in Glassfish"
-/change_admin_password_func.sh $PASS
+${bin_dir}/change_admin_password_func.sh $PASS
 echo "=> Enabling secure admin login"
-/enable_secure_admin.sh $PASS
+${bin_dir}/enable_secure_admin.sh $PASS
 echo "=> Done!"  
-touch /.glassfish_admin_password_changed
+touch ${root_dir}/.glassfish_admin_password_changed
     
 echo "========================================================================"
 echo "You can now connect to this Glassfish server using:"
