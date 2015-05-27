@@ -9,36 +9,17 @@ export bin_dir root_dir domains_dir
 
 set -e
 
-if [ ! -f ${root_dir}/.glassfish-initialized ]; then
-  ${bin_dir}/initialize-glassfish.sh
-  touch ${root_dir}/.glassfish-initialized
-fi
+#extlib_dir=${root_dir}/extlib
+#if [ "$(ls -A ${extlib_dir})" ]; then
+#    echo "${extlib_dir} is not empty, copy files to /opt/glassfish4/glassfish/lib"
+#    cp ${extlib_dir}/* /opt/glassfish4/glassfish/lib
+#fi
 
-if [ ! -f ${root_dir}/.glassfish-initialized ] || [ ! -f ${root_dir}/.glassfish_admin_password_changed ]; then
-    echo "=> Start Glassfish server"
-    asadmin start-domain 
-
-    if [ ! -f ${root_dir}/.glassfish_configured ]; then
-       ${bin_dir}/configure-glassfish.sh
-       touch ${root_dir}/.glassfish-configured
-    fi
-
-    if [ ! -f ${root_dir}/.glassfish_admin_password_changed ]; then
-        echo "Set admin password"
-        ${bin_dir}/change_admin_password.sh
-
-    fi
-
-    echo "=> Stop Glassfish server"
-    asadmin stop-domain
-fi
-
-deploy_dir=${root_dir}/deploy
-if [ "$(ls -A ${deploy_dir})" ]; then
-    echo "${deploy_dir} is not empty, copy deploy files to ${domains_dir}/autodeploy"
-    cp ${deploy_dir}/* ${domains_dir}/autodeploy
-fi
-
+#deploy_dir=${root_dir}/deploy
+#if [ "$(ls -A ${deploy_dir})" ]; then
+#    echo "${deploy_dir} is not empty, copy files to ${domains_dir}/domain1/autodeploy"
+#    cp ${deploy_dir}/* ${domains_dir}/domain1/autodeploy
+#fi
 
 echo "=> Starting and running Glassfish server"
 DEBUG_MODE=${DEBUG:-false}

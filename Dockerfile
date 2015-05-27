@@ -1,6 +1,9 @@
 FROM ubuntu-oracle-jdk8
 MAINTAINER Koert Zeilstra <koert.zeilstra@zencode.nl>
 
+# Build image
+# docker build -t koert/glassfish-4.1 .
+
 RUN apt-get update && \
     apt-get install -y wget unzip pwgen expect && \
     wget http://download.java.net/glassfish/4.1/release/glassfish-4.1.zip && \
@@ -12,14 +15,15 @@ ENV PATH /opt/glassfish4/bin:/opt/app/bin:$PATH
 RUN mkdir -p /opt/app/bin
 RUN mkdir -p /opt/app/deploy
 
-ADD bin/start-glassfish.sh /opt/app/bin/start-glassfish.sh
-ADD bin/initialize-glassfish.sh /opt/app/bin/initialize-glassfish.sh
-ADD bin/configure-glassfish.sh /opt/app/bin/configure-glassfish.sh
 ADD bin/change_admin_password.sh /opt/app/bin/change_admin_password.sh
 ADD bin/change_admin_password_func.sh /opt/app/bin/change_admin_password_func.sh
 ADD bin/enable_secure_admin.sh /opt/app/bin/enable_secure_admin.sh
-
+ADD bin/initialize-glassfish.sh /opt/app/bin/initialize-glassfish.sh
+ADD bin/configure-glassfish.sh /opt/app/bin/configure-glassfish.sh
+ADD bin/start-glassfish.sh /opt/app/bin/start-glassfish.sh
 RUN chmod +x /opt/app/bin/*.sh
+
+RUN /opt/app/bin/initialize-glassfish.sh 
 
 RUN echo 'root:root' | chpasswd
 

@@ -72,7 +72,11 @@ Log directory:
 
 docker run -d -v ~/tmp/domains:/opt/glassfish4/glassfish/domains:ro -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1
 
-docker run --rm -it -v ~/tmp/glassfish/import:/import:ro -v ~/tmp/glassfish/logs:/opt/glassfish4/glassfish/domains/domain1/logs -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
+docker run --rm -it -v ~/tmp/glassfish/deploy:/opt/app/deploy:ro -v ~/tmp/glassfish/logs:/opt/glassfish4/glassfish/domains/domain1/logs -p 4848:4848 -p 8080:8080 -p 9009:9009 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
+
+docker run --rm -it -v ~/tmp/glassfish/deploy:/opt/glassfish4/glassfish/domains/domain1/autodeploy -v ~/tmp/glassfish/logs:/opt/glassfish4/glassfish/domains/domain1/logs -p 4848:4848 -p 8080:8080 -p 9009:9009 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /opt/app/bin/start-glassfish.sh
+
+docker run --rm -it -v ~/tmp/glassfish/deploy:/opt/glassfish4/glassfish/domains/domain1/autodeploy -v ~/tmp/glassfish/logs:/opt/glassfish4/glassfish/domains/domain1/logs --net=host -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /opt/app/bin/start-glassfish.sh
 
 docker run --rm -it -v ~/tmp/glassfish/import:/import:ro -v ~/tmp/glassfish/domains:/opt/glassfish4/glassfish/domains -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
 
