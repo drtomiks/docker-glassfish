@@ -1,7 +1,7 @@
 docker-glassfish
 ================
 
-Base docker image to run a Glassfish 4.1 application server.
+Docker image to run a Glassfish 4.1 application server.
 
 Usage
 -----
