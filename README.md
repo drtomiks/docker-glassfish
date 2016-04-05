@@ -61,6 +61,11 @@ set the environment variable `DEBUG` to `true`:
 	docker run -d -p 4848:4848 -p 8080:8080 -p 9009:9009 -e DEBUG="true" koert/glassfish-4.1
 This should allow for debugger connections on port 9009.
 
+Oracle 8
+--------
+https://hub.docker.com/r/frolvlad/alpine-oraclejdk8/
+docker pull frolvlad/alpine-oraclejdk8
+
 Notes
 -----
 Auto deploy directory:
@@ -80,5 +85,6 @@ docker run --rm -it -v ~/tmp/glassfish/deploy:/opt/glassfish4/glassfish/domains/
 
 docker run --rm -it -v ~/tmp/glassfish/import:/import:ro -v ~/tmp/glassfish/domains:/opt/glassfish4/glassfish/domains -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
 
+docker run --rm -it -p 4848:4848 -p 8080:8080 -e GLASSFISH_PASS="mypass" koert/glassfish-4.1 /bin/bash
 
 
