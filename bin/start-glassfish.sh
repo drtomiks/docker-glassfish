@@ -15,11 +15,11 @@ set -e
 #    cp ${extlib_dir}/* /opt/glassfish4/glassfish/lib
 #fi
 
-#deploy_dir=${root_dir}/deploy
-#if [ "$(ls -A ${deploy_dir})" ]; then
-#    echo "${deploy_dir} is not empty, copy files to ${domains_dir}/domain1/autodeploy"
-#    cp ${deploy_dir}/* ${domains_dir}/domain1/autodeploy
-#fi
+deploy_dir=${root_dir}/deploy
+if [ "$(ls -A ${deploy_dir})" ]; then
+    echo "${deploy_dir} is not empty, copy files to ${domains_dir}/domain1/autodeploy"
+    cp ${deploy_dir}/* ${domains_dir}/domain1/autodeploy
+fi
 
 echo "=> Starting and running Glassfish server"
 DEBUG_MODE=${DEBUG:-false}
