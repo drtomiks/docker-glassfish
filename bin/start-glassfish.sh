@@ -3,7 +3,7 @@
 SCRIPT=$(readlink -f "$0")
 bin_dir=$(dirname "$SCRIPT")
 root_dir=${bin_dir}/..
-domains_dir=/opt/glassfish4/glassfish/domains
+domains_dir=/opt/glassfish3/glassfish/domains
 
 export bin_dir root_dir domains_dir
 
@@ -11,8 +11,8 @@ set -e
 
 #extlib_dir=${root_dir}/extlib
 #if [ "$(ls -A ${extlib_dir})" ]; then
-#    echo "${extlib_dir} is not empty, copy files to /opt/glassfish4/glassfish/lib"
-#    cp ${extlib_dir}/* /opt/glassfish4/glassfish/lib
+#    echo "${extlib_dir} is not empty, copy files to /opt/glassfish3/glassfish/lib"
+#    cp ${extlib_dir}/* /opt/glassfish3/glassfish/lib
 #fi
 
 deploy_dir=${root_dir}/deploy
