@@ -35,5 +35,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # 4848 (administration), 8080 (HTTP listener), 8181 (HTTPS listener), 9009 (JPDA debug port)
 EXPOSE 4848 8080 8181 9009
 
-# CMD ["/opt/app/bin/start-glassfish.sh"]
+CMD ["/opt/app/bin/start-glassfish.sh"]
 
