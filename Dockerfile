@@ -20,6 +20,7 @@ COPY bin/change_admin_password_func.sh /opt/app/bin/change_admin_password_func.s
 COPY bin/enable_secure_admin.sh /opt/app/bin/enable_secure_admin.sh
 COPY bin/initialize-glassfish.sh /opt/app/bin/initialize-glassfish.sh
 COPY bin/configure-glassfish.sh /opt/app/bin/configure-glassfish.sh
+COPY bin/start-glassfish.sh /opt/app/bin/start-glassfish.sh
 RUN chmod +x /opt/app/bin/*.sh
 
 RUN /opt/app/bin/initialize-glassfish.sh
@@ -35,5 +36,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # 4848 (administration), 8080 (HTTP listener), 8181 (HTTPS listener), 9009 (JPDA debug port)
 EXPOSE 4848 8080 8181 9009
 
-CMD ["/opt/app/bin/start-glassfish.sh"]
+#CMD ["/opt/app/bin/start-glassfish.sh"]
 
