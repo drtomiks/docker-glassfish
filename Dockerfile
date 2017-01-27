@@ -1,4 +1,4 @@
-FROM koert/docker-ubuntu-oracle-jdk7
+FROM drtomiks/ubuntu1404-java7
 MAINTAINER Tom McKibben <tmckibben1138@gmail.com>
 
 # Build image
@@ -26,7 +26,7 @@ RUN /opt/app/bin/initialize-glassfish.sh
 
 RUN echo 'root:root' | chpasswd
 
-RUN mkdir /etc/service/glassfish
+RUN mkdir -p /etc/service/glassfish
 COPY bin/start-glassfish.sh /etc/service/glassfish/run
 RUN chmod +x /etc/service/glassfish/run
 
